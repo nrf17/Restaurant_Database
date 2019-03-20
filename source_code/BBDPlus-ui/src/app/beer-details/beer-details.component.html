@@ -1,0 +1,71 @@
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">{{beerName}}</h1>
+    </div>
+  </div>
+<br>
+
+<div class="container">
+  <h5>Top 10 Bars Where this Beer Sells the Most</h5>
+  <p-table [value]="beerDetails">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Bar</th>
+        <th>Sold</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-beerDetails>
+        <tr>
+        <td>{{beerDetails.bar}}</td>
+        <td>{{beerDetails.sells}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<br>
+<br>
+
+<div class="container">
+    <h5>Drinkers who Consume this Beer the Most</h5>
+
+    <p-table [value]="beerConsumes" [paginator]="true" [rows]="10">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Drinker</th>
+          <th>Consumes</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-beerConsumes>
+          <tr>
+          <td>{{beerConsumes.drinker}}</td>
+          <td>{{beerConsumes.consumes}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+<br>
+<br>
+
+
+<div class="container">
+    <h5>Time Distribution of when this Beer Sells the Most</h5>
+
+    <p-table [value]="beerTimes" [paginator]="true" [rows]="10">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Time</th>
+          <th>Sells</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-beerTimes>
+          <tr>
+          <td>{{beerTimes.time}}</td>
+          <td>{{beerTimes.sells}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+<br>
+<br>

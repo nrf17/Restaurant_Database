@@ -1,0 +1,19 @@
+<div class="container">
+    <h2 class="text center font weight light">Bartenders</h2>
+    <p-table [value]="bartenders" [paginator]="true" [rows]="10">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Name</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-bartender>
+        <tr>
+         <td>
+            <a routerLink = "/bartenders/{{bartender.name}}">
+              {{bartender.name}}
+            </a>
+            </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>  

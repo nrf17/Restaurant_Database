@@ -1,0 +1,32 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">{{bartenderName}}</h1>
+  </div>
+</div>
+<br>
+
+
+
+<div class="container">
+  <h5>Shift Beer Sales</h5>
+  <p-table [value]="sales" [paginator]="true" [rows]="10">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Date</th>
+        <th>Bar</th>
+        <th>Item</th>
+        <th>Sold</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-sale>
+        <tr>
+        <td>{{sale.date}}</td>
+        <td>{{sale.bar}}</td>
+        <td>{{sale.item}}</td>
+        <td>{{sale.sold}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<br><br>

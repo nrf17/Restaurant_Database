@@ -1,0 +1,696 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Modify the Database</h1>
+  </div>
+</div>
+
+
+
+<div class="container">
+    <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="425" #cd>
+        <p-footer>
+            <button type="button" pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
+            <button type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
+
+          </p-footer>
+    </p-confirmDialog>
+
+  <br><br>
+  <p-tabView >
+
+    <!------------------------------------- Bars Tab ----------------------------------------------------->
+      <p-tabPanel header="Bars">
+          <br>
+          <button pButton type="button" (click)="insertBarEvent($event)" label="Insert A New Bar" ></button>
+            <div class="ui-g ui-fluid">
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        <input id=bars-barName type="text" pInputText placeholder="Bar Name">         
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        <input id=bars-barOpen type="text" pInputText placeholder="Open Time">         
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        <input id=bars-barClose type="text" pInputText placeholder="Close Time">         
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        <input id=bars-barLicense type="text" pInputText placeholder="Bar License">         
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        <input id=bars-barPhone type="text" pInputText placeholder="Phone Number">         
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        <input id=bars-barAddress type="text" pInputText placeholder="Bar Address">   
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        <input id=bars-barCity type="text" pInputText placeholder="City">         
+                    </div>
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        <input id=bars-barState type="text" pInputText placeholder="State">      
+                    </div>
+                </div>
+            </div>
+            
+            <br><br>
+            <button pButton type="button" (click)="deleteBarClick($event)" label="Delete A Bar" ></button>
+            <div class="ui-g ui-fluid">
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup">
+                        <input id=bars-barDelete type="text" pInputText placeholder="Bar Name">         
+                    </div>
+                </div>
+            </div>
+          
+          <br><br>
+          <p-table [value]="bars" [paginator]="true" [rows]="10">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>Name</th>
+                  <th>Open</th>
+                  <th>Close</th>
+                  <th>License</th>
+                  <th>Phone</th>
+                  <th>Address</th>
+                  <th>City</th>
+                  <th>State</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-bar>
+                <tr>
+                  <td>{{ bar.name }}</td>
+                  <td>{{ bar.open }}</td>
+                  <td>{{ bar.close }}</td>
+                  <td>{{ bar.license }}</td>
+                  <td>{{ bar.phone }}</td>
+                  <td>{{ bar.address }}</td>
+                  <td>{{ bar.city }}</td>
+                  <td>{{ bar.state }}</td>
+                </tr>
+              </ng-template>
+            </p-table>
+      </p-tabPanel>
+      <!------------------------------------- Bars Tab ----------------------------------------------------->
+
+
+
+      <!------------------------------------- Bartenders Tab ---------------------------------------------->
+      <p-tabPanel header="Bartenders">
+            <br>
+            <button pButton type="button" (click)="insertBartenderEvent($event)" label="Insert A New Bartender" ></button>
+            <div class="ui-g ui-fluid">
+              <div class="ui-g-12 ui-md-4">
+                  <div class="ui-inputgroup">
+                      <input id=bartender-bartenderName type="text" pInputText placeholder="Bartender Name">         
+                  </div>
+              </div>
+            </div>
+            
+            <br><br>
+            <button pButton type="button" (click)="deleteBartenderClick($event)" label="Delete A Bartender" ></button>
+            <div class="ui-g ui-fluid">
+              <div class="ui-g-12 ui-md-4">
+                  <div class="ui-inputgroup">
+                      <input id=bartender-bartenderDelete type="text" pInputText placeholder="Bartender Name">         
+                  </div>
+              </div>
+            </div>
+
+            <br><br>
+          <p-table [value]="bartenders" [paginator]="true" [rows]="10">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>Name</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-bartender>
+                <tr>
+                  <td>{{ bartender.name }}</td>
+                </tr>
+              </ng-template>
+            </p-table>
+      </p-tabPanel>
+      <!------------------------------------- Bartenders Tab ---------------------------------------------->
+
+     <!------------------------------------- Beers Tab ---------------------------------------------->
+     <p-tabPanel header="Beers">
+        <br>
+        <button pButton type="button" (click)="insertBeerEvent($event)" label="Insert A New Beer" ></button>
+        <div class="ui-g ui-fluid">
+          <div class="ui-g-12 ui-md-4">
+              <div class="ui-inputgroup">
+                  <input id=beer-beerName type="text" pInputText placeholder="Beer Name">          
+              </div>
+          </div>
+          <div class="ui-g-12 ui-md-4">
+                <div class="ui-inputgroup">
+                    <input id=beer-manufacturerName type="text" pInputText placeholder="Manufacturer Name">           
+                </div>
+            </div>
+        </div>
+
+
+        <br><br>
+        <button pButton type="button" (click)="deleteBeerClick($event)" label="Delete A Beer" ></button>
+        <div class="ui-g ui-fluid">
+          <div class="ui-g-12 ui-md-4">
+              <div class="ui-inputgroup">
+                  <input id=beer-beerDelete type="text" pInputText placeholder="Beer Name">         
+              </div>
+          </div>
+        </div>
+
+
+
+        <br><br>
+      <p-table [value]="beers" [paginator]="true" [rows]="10">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Item</th>
+              <th>Manufacturer</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-beer>
+            <tr>
+              <td>{{ beer.item }}</td>
+              <td>{{beer.manufacturer}}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+  </p-tabPanel>
+  <!------------------------------------- Beers Tab ---------------------------------------------->
+
+
+  <!------------------------------------- Beers Tab ---------------------------------------------->
+  <p-tabPanel header="Bills">
+        <br>
+
+
+        <br><br>
+      <p-table [value]="bills" [paginator]="true" [rows]="10">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>ID</th>
+              <th>Time</th>
+              <th>Date</th>
+              <th>Drinker</th>
+              <th>Bar</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-bill>
+            <tr>
+              <td>{{ bill.id }}</td>
+              <td>{{bill.time}}</td>
+              <td>{{ bill.date }}</td>
+              <td>{{ bill.drinker }}</td>
+              <td>{{ bill.bar }}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+  </p-tabPanel>
+  <!------------------------------------- Beers Tab ---------------------------------------------->
+
+
+
+  <!------------------------------------- Drinkers Tab ---------------------------------------------->
+  <p-tabPanel header="Drinkers">
+        <br>
+        <button pButton type="button" (click)="insertDrinkerEvent($event)" label="Insert A New Drinker" ></button>
+        <div class="ui-g ui-fluid">
+                <div class="ui-g-12 ui-md-4">
+                        <div class="ui-inputgroup">
+                            <input id=drinker-drinkerName type="text" pInputText placeholder="Drinker Name">         
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <div class="ui-inputgroup">
+                            <input id=drinker-phoneName type="text" pInputText placeholder="Phone Number">         
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <div class="ui-inputgroup">
+                            <input id=drinker-addressName type="text" pInputText placeholder="Address">         
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <div class="ui-inputgroup">
+                            <input id=drinker-cityName type="text" pInputText placeholder="City">         
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <div class="ui-inputgroup">
+                            <input id=drinker-stateName type="text" pInputText placeholder="State">         
+                        </div>
+                    </div>
+             
+        </div>
+
+
+        <br><br>
+        <button pButton type="button" (click)="deleteDrinkerClick($event)" label="Delete A Drinker" ></button>
+        <div class="ui-g ui-fluid">
+          <div class="ui-g-12 ui-md-4">
+              <div class="ui-inputgroup">
+                  <input id=drinker-drinkerDelete type="text" pInputText placeholder="Drinker Name">         
+              </div>
+          </div>
+        </div>
+
+
+
+        <br><br>
+      <p-table [value]="drinkers" [paginator]="true" [rows]="10">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Address</th>
+              <th>City</th>
+              <th>State</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-drinker>
+            <tr>
+              <td>{{drinker.name}}</td>
+              <td>{{drinker.phone}}</td>
+              <td>{{drinker.address}}</td>
+              <td>{{drinker.city}}</td>
+              <td>{{drinker.state}}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+  </p-tabPanel>
+   <!------------------------------------- Drinkers Tab ---------------------------------------------->
+
+
+    <!------------------------------------- Food Tab ---------------------------------------------->
+    <p-tabPanel header="Food">
+            <br>
+
+
+
+            <br><br>
+          <p-table [value]="foods" [paginator]="true" [rows]="10">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>Item</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-food>
+                <tr>
+                  <td>{{food.item}}</td>
+                </tr>
+              </ng-template>
+            </p-table>
+      </p-tabPanel>
+       <!------------------------------------- Food Tab ---------------------------------------------->
+
+
+       <!------------------------------ Frequents Tab ---------------------------------------------->
+       <p-tabPanel header="Frequents">
+            <br>
+
+
+
+            <br><br>
+          <p-table [value]="frequents" [paginator]="true" [rows]="10">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>Drinker</th>
+                  <th>Bar</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-freq>
+                <tr>
+                  <td>{{freq.drinker}}</td>
+                  <td>{{freq.bar}}</td>
+                </tr>
+              </ng-template>
+            </p-table>
+      </p-tabPanel>
+      <!------------------------------ Frequents Tab ---------------------------------------------->
+
+
+
+
+
+
+
+
+
+<!------------------------------------- Inventorys Tab ---------------------------------------------->
+<p-tabPanel header="Inventory">
+    <br>
+    <!-- <button pButton type="button" (click)="insertTransactionEvent($event)" label="Insert A New Bar" ></button>
+      <div class="ui-g ui-fluid">
+          <div class="ui-g-12 ui-md-4">
+              <div class="ui-inputgroup">
+                  <input id=transactions-transactionBill type="text" pInputText placeholder="Bill">         
+              </div>
+          </div>
+          <div class="ui-g-12 ui-md-4">
+              <div class="ui-inputgroup">
+                  <input id=transactions-transactionItem type="text" pInputText placeholder="Item">         
+              </div>
+          </div>
+          <div class="ui-g-12 ui-md-4">
+              <div class="ui-inputgroup">
+                  <input id=transactions-transactionCount type="text" pInputText placeholder="Count">         
+              </div>
+          </div>
+        
+      </div>
+      
+      <br><br>
+      <button pButton type="button" (click)="deleteTransactionClick($event)" label="Delete A Transaction" ></button>
+      <div class="ui-g ui-fluid">
+          <div class="ui-g-12 ui-md-4">
+              <div class="ui-inputgroup">
+                  <input id=transactions-transactionDelete type="text" pInputText placeholder="Bill">         
+              </div>
+          </div>
+      </div>
+     -->
+    <br><br>
+    <p-table [value]="inventorys" [paginator]="true" [rows]="10">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Count</th>
+            <th>Bar</th>
+            <th>Item</th>
+
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-inventory>
+          <tr>
+            <td>{{ inventory.count }}</td>
+            <td>{{ inventory.bar }}</td>
+            <td>{{ inventory.item }}</td>
+
+          </tr>
+        </ng-template>
+      </p-table>
+</p-tabPanel>
+<!------------------------------------- Inventorys Tab ---------------------------------------------->
+
+
+
+
+
+
+<!------------------------------------- Items Tab ---------------------------------------------->
+<p-tabPanel header="Items">
+    <br>
+    <!-- <button pButton type="button" (click)="insertTransactionEvent($event)" label="Insert A New Bar" ></button>
+      <div class="ui-g ui-fluid">
+          <div class="ui-g-12 ui-md-4">
+              <div class="ui-inputgroup">
+                  <input id=transactions-transactionBill type="text" pInputText placeholder="Bill">         
+              </div>
+          </div>
+          <div class="ui-g-12 ui-md-4">
+              <div class="ui-inputgroup">
+                  <input id=transactions-transactionItem type="text" pInputText placeholder="Item">         
+              </div>
+          </div>
+          <div class="ui-g-12 ui-md-4">
+              <div class="ui-inputgroup">
+                  <input id=transactions-transactionCount type="text" pInputText placeholder="Count">         
+              </div>
+          </div>
+        
+      </div>
+      
+      <br><br>
+      <button pButton type="button" (click)="deleteTransactionClick($event)" label="Delete A Transaction" ></button>
+      <div class="ui-g ui-fluid">
+          <div class="ui-g-12 ui-md-4">
+              <div class="ui-inputgroup">
+                  <input id=transactions-transactionDelete type="text" pInputText placeholder="Bill">         
+              </div>
+          </div>
+      </div>
+     -->
+    <br><br>
+    <p-table [value]="items" [paginator]="true" [rows]="10">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Name</th>
+
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item>
+          <tr>
+            <td>{{ item.name }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+</p-tabPanel>
+<!------------------------------------- Items Tab ---------------------------------------------->
+
+
+
+
+ <!------------------------------------- Likes Tab ---------------------------------------------->
+ <p-tabPanel header="Likes">
+    <br>
+    <!-- <button pButton type="button" (click)="insertTransactionEvent($event)" label="Insert A New Bar" ></button>
+      <div class="ui-g ui-fluid">
+          <div class="ui-g-12 ui-md-4">
+              <div class="ui-inputgroup">
+                  <input id=transactions-transactionBill type="text" pInputText placeholder="Bill">         
+              </div>
+          </div>
+          <div class="ui-g-12 ui-md-4">
+              <div class="ui-inputgroup">
+                  <input id=transactions-transactionItem type="text" pInputText placeholder="Item">         
+              </div>
+          </div>
+          <div class="ui-g-12 ui-md-4">
+              <div class="ui-inputgroup">
+                  <input id=transactions-transactionCount type="text" pInputText placeholder="Count">         
+              </div>
+          </div>
+        
+      </div>
+      
+      <br><br>
+      <button pButton type="button" (click)="deleteTransactionClick($event)" label="Delete A Transaction" ></button>
+      <div class="ui-g ui-fluid">
+          <div class="ui-g-12 ui-md-4">
+              <div class="ui-inputgroup">
+                  <input id=transactions-transactionDelete type="text" pInputText placeholder="Bill">         
+              </div>
+          </div>
+      </div>
+     -->
+    <br><br>
+    <p-table [value]="likes" [paginator]="true" [rows]="10">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Drinker</th>
+            <th>Item</th>
+
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-like>
+          <tr>
+            <td>{{ like.drinker }}</td>
+            <td>{{ like.item }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+</p-tabPanel>
+<!------------------------------------- Likes Tab ---------------------------------------------->
+
+
+<!------------------------------------- Sells Tab ---------------------------------------------->
+<p-tabPanel header="Sells">
+    <br>
+    <!-- <button pButton type="button" (click)="insertSellsEvent($event)" label="Insert A New Sells" ></button>
+      <div class="ui-g ui-fluid">
+          <div class="ui-g-12 ui-md-4">
+              <div class="ui-inputgroup">
+                  <input id=transactions-transactionBill type="text" pInputText placeholder="Bill">         
+              </div>
+          </div>
+          <div class="ui-g-12 ui-md-4">
+              <div class="ui-inputgroup">
+                  <input id=transactions-transactionItem type="text" pInputText placeholder="Item">         
+              </div>
+          </div>
+          <div class="ui-g-12 ui-md-4">
+              <div class="ui-inputgroup">
+                  <input id=transactions-transactionCount type="text" pInputText placeholder="Count">         
+              </div>
+          </div>
+        
+      </div>
+      
+      <br><br>
+      <button pButton type="button" (click)="deleteTransactionClick($event)" label="Delete A Transaction" ></button>
+      <div class="ui-g ui-fluid">
+          <div class="ui-g-12 ui-md-4">
+              <div class="ui-inputgroup">
+                  <input id=transactions-transactionDelete type="text" pInputText placeholder="Bill">         
+              </div>
+          </div>
+      </div>
+     -->
+    <br><br>
+    <p-table [value]="sells" [paginator]="true" [rows]="10">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Price</th>
+            <th>Bar</th>
+            <th>Item</th>
+
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-sell>
+          <tr>
+            <td>{{ sell.price }}</td>
+            <td>{{ sell.bar }}</td>
+            <td>{{ sell.item }}</td>
+
+          </tr>
+        </ng-template>
+      </p-table>
+</p-tabPanel>
+<!------------------------------------- Likes Tab ---------------------------------------------->
+
+
+
+
+ <!------------------------------------- Shifts Tab ---------------------------------------------->
+ <p-tabPanel header="Shifts">
+    <br>
+    <!-- <button pButton type="button" (click)="insertTransactionEvent($event)" label="Insert A New Bar" ></button>
+      <div class="ui-g ui-fluid">
+          <div class="ui-g-12 ui-md-4">
+              <div class="ui-inputgroup">
+                  <input id=transactions-transactionBill type="text" pInputText placeholder="Bill">         
+              </div>
+          </div>
+          <div class="ui-g-12 ui-md-4">
+              <div class="ui-inputgroup">
+                  <input id=transactions-transactionItem type="text" pInputText placeholder="Item">         
+              </div>
+          </div>
+          <div class="ui-g-12 ui-md-4">
+              <div class="ui-inputgroup">
+                  <input id=transactions-transactionCount type="text" pInputText placeholder="Count">         
+              </div>
+          </div>
+        
+      </div>
+      
+      <br><br>
+      <button pButton type="button" (click)="deleteTransactionClick($event)" label="Delete A Transaction" ></button>
+      <div class="ui-g ui-fluid">
+          <div class="ui-g-12 ui-md-4">
+              <div class="ui-inputgroup">
+                  <input id=transactions-transactionDelete type="text" pInputText placeholder="Bill">         
+              </div>
+          </div>
+      </div>
+     -->
+    <br><br>
+    <p-table [value]="shifts" [paginator]="true" [rows]="10">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Bar</th>
+            <th>Bartender</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Date</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-shift>
+          <tr>
+            <td>{{ shift.bar }}</td>
+            <td>{{ shift.bartender }}</td>
+            <td>{{ shift.start }}</td>
+            <td>{{ shift.end }}</td>
+            <td>{{ shift.date }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+</p-tabPanel>
+<!------------------------------------- Shifts Tab ---------------------------------------------->
+
+
+            <!------------------------------------- Transactions Tab ---------------------------------------------->
+            <p-tabPanel header="Transactions">
+                <br>
+                <button pButton type="button" (click)="insertTransactionEvent($event)" label="Insert A New Bar" ></button>
+                  <div class="ui-g ui-fluid">
+                      <div class="ui-g-12 ui-md-4">
+                          <div class="ui-inputgroup">
+                              <input id=transactions-transactionBill type="text" pInputText placeholder="Bill">         
+                          </div>
+                      </div>
+                      <div class="ui-g-12 ui-md-4">
+                          <div class="ui-inputgroup">
+                              <input id=transactions-transactionItem type="text" pInputText placeholder="Item">         
+                          </div>
+                      </div>
+                      <div class="ui-g-12 ui-md-4">
+                          <div class="ui-inputgroup">
+                              <input id=transactions-transactionCount type="text" pInputText placeholder="Count">         
+                          </div>
+                      </div>
+                    
+                  </div>
+                  
+                  <br><br>
+                  <button pButton type="button" (click)="deleteTransactionClick($event)" label="Delete A Transaction" ></button>
+                  <div class="ui-g ui-fluid">
+                      <div class="ui-g-12 ui-md-4">
+                          <div class="ui-inputgroup">
+                              <input id=transactions-transactionDelete type="text" pInputText placeholder="Bill">         
+                          </div>
+                      </div>
+                  </div>
+                
+                <br><br>
+                <p-table [value]="transactions" [paginator]="true" [rows]="10">
+                    <ng-template pTemplate="header">
+                      <tr>
+                        <th>Bill</th>
+                        <th>Item</th>
+                        <th>Count</th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-transaction>
+                      <tr>
+                        <td>{{ transaction.bill }}</td>
+                        <td>{{ transaction.item }}</td>
+                        <td>{{ transaction.count }}</td>
+                      </tr>
+                    </ng-template>
+                  </p-table>
+            </p-tabPanel>
+          <!------------------------------------- Transactions Tab ---------------------------------------------->
+    
+
+
+
+  </p-tabView>
+  
+  
+  </div>
+  <br><br><br>

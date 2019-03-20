@@ -1,0 +1,60 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">{{drinkerName}}</h1>
+      <p class="drinker-details" *ngIf ="drinkerDetails">
+        {{drinkerDetails?.address}}, {{drinkerDetails?.city}} {{drinkerDetails?.state}}
+        <br>
+        {{drinkerDetails?.phone}}
+      </p>
+    </div>
+  </div>
+  
+  <div class="container">
+      <h5>Transactions Ordered by Time and Grouped by Different Bars</h5>
+      <p-table [value]="drinkerTrans" [paginator]="true" [rows]="10">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Bar</th>
+            <th>Count</th>
+            <th>Date</th>
+            <th>ID</th>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Time</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-drinkerTrans>
+            <tr>
+            <td>{{drinkerTrans.bar}}</td>
+            <td>{{drinkerTrans.count}}</td>
+            <td>{{drinkerTrans.date}}</td>
+            <td>{{drinkerTrans.id}}</td>
+            <td>{{drinkerTrans.item}}</td>
+            <td>{{drinkerTrans.price}}</td>
+            <td>{{drinkerTrans.time}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+
+    <br>
+    <br>
+
+  <div class="container">
+    <br>
+    <div id ="drinkergraph1">
+
+    </div>
+  </div>
+
+  <br>
+  <br>
+<div class="container">
+  <br>
+  <div id ="drinkergraph2">
+
+  </div>
+</div>
+
+  <br>
+  <br>
